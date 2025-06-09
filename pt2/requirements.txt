@@ -1,0 +1,8 @@
+pyspark==4.0.0
+pytest==8.4.0
+pandas==2.3.0
+
+
+faker==37.3.0
+kafka-python==2.2.11
+psycopg2-binary==2.9.10

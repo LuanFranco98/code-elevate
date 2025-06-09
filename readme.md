@@ -56,4 +56,5 @@ Armazenar os dados consumidos em um banco de dados.
 ## durante o desenvolvimento:
 
 
-- rodar os testes: PYTHONPATH=. pytest tests/
+- rodar os testes:
+entrar na folder do pt1: PYTHONPATH=. pytest tests/
