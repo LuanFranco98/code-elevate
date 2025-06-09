@@ -8,7 +8,7 @@ WORKDIR /app
 COPY sensor_consumer.py .
 
 # Instalando dependências
-RUN pip install kafka-python faker
+RUN pip install kafka-python simplejson
 
 # Rodando script
 CMD ["python", "sensor_consumer.py"]
