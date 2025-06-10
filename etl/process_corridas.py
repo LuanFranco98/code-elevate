@@ -18,20 +18,14 @@ class CorridasProcessor:
             .getOrCreate()
 
     def read_data(self) -> DataFrame:
-        """
-        Lê o CSV de entrada e retorna um DataFrame Spark.
-        """
         return self.spark.read.option("header", True).csv(self.input_path)
 
     def transform_data(self, df: DataFrame) -> DataFrame:
-        """
-        Aplica transformações e retorna o DataFrame agregado.
-        """
         df = df.withColumn("DATA_INICIO", to_date("DATA_INICIO", "MM-dd-yyyy HH")) \
                .withColumn("DISTANCIA", col("DISTANCIA").cast("double")) \
-               .withColumn("DT_REF", date_format("DATA_INICIO", "yyyy-MM-dd"))
+               .withColumn("DT_REFE", date_format("DATA_INICIO", "yyyy-MM-dd"))
 
-        df_agg = df.groupBy("DT_REF").agg(
+        df_agg = df.groupBy("DT_REFE").agg(
             count("*").alias("QT_CORR"),
             count(when(col("CATEGORIA") == "Negócio", True)).alias("QT_CORR_NEG"),
             count(when(col("CATEGORIA") == "Pessoal", True)).alias("QT_CORR_PESS"),
@@ -45,25 +39,14 @@ class CorridasProcessor:
         return df_agg
 
     def write_output(self, df: DataFrame):
-        """
-        Escreve o DataFrame final em CSV.
-        """
         output_dir = os.path.dirname(self.output_path)
         os.makedirs(output_dir, exist_ok=True)
 
         df.coalesce(1).write.mode("overwrite").parquet(self.output_path)
 
-        # df.coalesce(1).write \
-        #     .option("header", True) \
-        #     .mode("overwrite") \
-        #     .csv(self.output_path)
-
         print(f"Arquivo salvo em: {self.output_path}")
 
     def run(self):
-        """
-        Executa o pipeline completo.
-        """
         df_raw = self.read_data()
         df_final = self.transform_data(df_raw)
         self.write_output(df_final)
