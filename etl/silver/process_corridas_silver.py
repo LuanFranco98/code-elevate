@@ -1,5 +1,6 @@
 from pyspark.sql import SparkSession, DataFrame
 from pyspark.sql import functions as f
+from pyspark.sql.types import LongType
 from datetime import datetime, date 
 import os
 
@@ -47,7 +48,7 @@ class CorridasProcessorSilver:
                         f.to_date(f.col("DATA_FIM"), "MM-dd-yyyy HH:mm"),
                         "yyyy-MM-dd"
                     ).alias("DATA_FIM"),
-                    f.col("DISTANCIA").cast("float").alias("DISTANCIA"),
+                    f.col("DISTANCIA").cast(LongType()).alias("DISTANCIA"),
                     f.coalesce(f.col("PROPOSITO"), f.lit("Desconhecido")).alias("PROPOSITO"),
                     f.col("CATEGORIA"),
                     f.col("LOCAL_INICIO"),

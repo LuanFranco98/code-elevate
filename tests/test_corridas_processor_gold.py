@@ -77,9 +77,9 @@ def test_asset_columns(spark):
 def test_asset_values(spark):
     sample_data = [
         Row(DATA_INICIO="2016-01-15", DATA_FIM="2016-01-15", CATEGORIA="Negocio",
-            LOCAL_INICIO="A", LOCAL_FIM="B", DISTANCIA="10", PROPOSITO="Reunião"),
+            LOCAL_INICIO="A", LOCAL_FIM="B", DISTANCIA=10, PROPOSITO="Reunião"),
         Row(DATA_INICIO="2016-01-15", DATA_FIM="2016-01-15", CATEGORIA="Negocio",
-            LOCAL_INICIO="A", LOCAL_FIM="B", DISTANCIA="16", PROPOSITO="Entregas"),
+            LOCAL_INICIO="A", LOCAL_FIM="B", DISTANCIA=16, PROPOSITO="Entregas"),
     ]
     raw_df = spark.createDataFrame(sample_data)
 
