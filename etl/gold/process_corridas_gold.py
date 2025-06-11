@@ -25,7 +25,7 @@ class CorridasProcessorGold:
             )
             return df_silver
         except Exception as e:
-            print(f"Error reading bronze parquet from {self.input_path}.Error: {e}")
+            print(f"Error reading silver parquet from {self.input_path}.Error: {e}")
             raise e
     
     def transform_data(self, df_silver):

@@ -30,4 +30,3 @@ if __name__ == "__main__":
     )
 
     processor_gold.run()
-

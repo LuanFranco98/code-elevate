@@ -15,7 +15,6 @@ def spark():
 
 
 def test_transform_data(spark):
-    # Simula dados de entrada
     data = [
         ("01-01-2022 08", "Negócio", "Casa", "Reunião", 1.5),
         ("01-01-2022 09", "Pessoal", "Trabalho", "Outro", 2.2),
@@ -24,7 +23,6 @@ def test_transform_data(spark):
     columns = ["DATA_INICIO", "CATEGORIA", "LOCAL_INICIO", "PROPOSITO", "DISTANCIA"]
     df_mock = spark.createDataFrame(data, columns)
 
-    # Instancia a classe (não precisa de caminho real para teste)
     processor = CorridasProcessor("fake.csv", "fake_out.parquet")
 
     df_result = processor.transform_data(df_mock)
@@ -43,7 +41,7 @@ def test_transform_data(spark):
 
 def test_read_csv():
     #TODO
-    assert 1 == 1
+    assert 1 == 0
 
 def test_save_parquet():
     #TODO
