@@ -1,4 +1,4 @@
-from bronze.process_corridas_bronze import CorridasProcessorBronze
+from .process_corridas_bronze import CorridasProcessorBronze
 
 all = [
     "CorridasProcessorBronze"

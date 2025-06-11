@@ -32,8 +32,6 @@ class CorridasProcessorBronze:
             raise e
     
     def transform_data(self, raw_df):
-        parsed_end_date = datetime.strptime(os.environ["END_DATE"], "%m-%d-%Y").date()
-        print(parsed_end_date)
         try:
             df = (
                 raw_df.select(

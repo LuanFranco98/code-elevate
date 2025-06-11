@@ -1,5 +1,6 @@
 from pyspark.sql import SparkSession, DataFrame
 from pyspark.sql import functions as f
+from pyspark.sql.types import LongType
 from datetime import datetime 
 import os
 
@@ -47,9 +48,9 @@ class CorridasProcessorGold:
                     f.count("*").alias("QT_CORR"),
                     f.sum(f.when((f.col("CATEGORIA") == "Negocio"), 1).otherwise(0)).alias("QT_CORR_NEG"),
                     f.sum(f.when((f.col("CATEGORIA") == "Pessoal"), 1).otherwise(0)).alias("QT_CORR_PESS"),
-                    f.max(f.col("DISTANCIA")).alias("VL_MAX_DIST"),
-                    f.min(f.col("DISTANCIA")).alias("VL_MIN_DIST"),
-                    f.mean(f.col("DISTANCIA")).alias("VL_AVG_DIST"),
+                    f.max(f.col("DISTANCIA").cast(LongType())).alias("VL_MAX_DIST"),
+                    f.min(f.col("DISTANCIA").cast(LongType())).alias("VL_MIN_DIST"),
+                    f.mean(f.col("DISTANCIA").cast(LongType())).alias("VL_AVG_DIST"),
                     f.sum(f.when((f.col("PROPOSITO") == "Reunião"), 1).otherwise(0)).alias("QT_CORR_REUNI"),
                     f.sum(f.when((f.col("PROPOSITO") != "Reunião"), 1).otherwise(0)).alias("QT_CORR_NAO_REUNI"),
                 )       

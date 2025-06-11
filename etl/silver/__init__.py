@@ -1,4 +1,4 @@
-from silver.process_corridas_silver import CorridasProcessorSilver
+from .process_corridas_silver import CorridasProcessorSilver
 
 all = [
     "CorridasProcessorSilver"

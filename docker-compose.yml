@@ -18,8 +18,12 @@ services:
       - GOLD_INPUT_PATH=data/silver/silver_info_corridas_do_dia.parquet
       - GOLD_OUTPUT_PATH=/opt/data/gold/gold_info_corridas_do_dia.parquet
 
-  # test:
-  #   container_name: test
-  #   build:
-  #     context: ./
-  #     dockerfile: Dockerfile.test
+  spark-test:
+    container_name: tests
+    build:
+      context: .
+      dockerfile: tests/Dockerfile.tests
+    environment:
+      - START_DATE=01-01-2016
+      - END_DATE=01-31-2016
+    command: pytest tests/
