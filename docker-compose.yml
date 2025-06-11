@@ -1,0 +1,23 @@
+services:
+  etl:
+    container_name: etl
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    volumes:
+      - ./data/bronze:/opt/data/bronze
+      - ./data/silver:/opt/data/silver
+      - ./data/gold:/opt/data/gold
+    environment:
+      - START_DATE=01-01-2016
+      - END_DATE=12-31-2016
+      - BRONZE_INPUT_PATH=data/raw/info_transportes.csv
+      - BRONZE_OUTPUT_PATH=/opt/data/bronze/bronze_info_corridas_do_dia.parquet
+      - SILVER_INPUT_PATH=data/bronze/bronze_info_corridas_do_dia.parquet
+      - SILVER_OUTPUT_PATH=/opt/data/silver/silver_info_corridas_do_dia.parquet
+
+  # test:
+  #   container_name: test
+  #   build:
+  #     context: ./
+  #     dockerfile: Dockerfile.test
