@@ -79,7 +79,7 @@ cd code-elevate
 ```
 2. Start the project:
 ``` bash
-docker-compose up --build
+docker compose up --build
 ```
 
 This will start:
