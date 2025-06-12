@@ -35,7 +35,7 @@ class CorridasProcessorBronze:
         try:
             df = (
                 raw_df.select(
-                    f.to_date(f.col("DATA_INICIO"), "MM-dd-yyyy HH:mm").alias("DATA_INICIO"),
+                    f.to_date(f.col("DATA_INICIO"), "MM-dd-yyyy HH").alias("DATA_INICIO"),
                     f.col("DATA_FIM"),
                     f.col("CATEGORIA"),
                     f.col("LOCAL_INICIO"),

@@ -1,38 +1,28 @@
 # Diario de Bordo
 
-# Monitoramento de Sensores IoT
-
 ## Problem description
 A amostra de dados em anexo (info_transportes.csv), possui dados de um aplicativo de transporte privado, cujas colunas são:
 
 
-o DATA_INICIO (formato: "mm-dd-yyyy HH") o DATA_FIM (formato: "mm-dd-yyyy HH")
-
-o CATEGORIA o LOCAL_INICIO o LOCAL_FIM o PROPOSITO
-
-o DISTANCIA
+- DATA_INICIO (formato: "mm-dd-yyyy HH")
+- DATA_FIM (formato: "mm-dd-yyyy HH")
+- CATEGORIA
+- LOCAL_INICIO
+- LOCAL_FIM 
+- PROPOSITO
+- DISTANCIA
 
 Uma equipe está elaborando um modelo para compreender como os clientes estão utilizando o aplicativo. Para isso, você precisa fornecer uma nova tabela “info_corridas_do_dia", com dados agrupados pela data de início do transporte utilizando a formatação “yyyy-MM-dd”, contendo as seguintes colunas:
 
-Nome da coluna Descrição
-
-DT_REFE Data de referência.
-
-QT_CORR Quantidade de corridas.
-
-QT_CORR_NEG Quantidade de corridas com a categoria “Negócio”.
-
-QT_CORR_PESS Quantidade de corridas com a categoria “Pessoal”.
-
-VL_MAX_DIST Maior distância percorrida por uma corrida.
-
-VL_MIN_DIST Menor distância percorrida por uma corrida.
-
-VL_AVG_DIST Média das distâncias percorridas.
-
-QT_CORR_ REUNI Quantidade de corridas com o propósito de "Reunião".
-
-QT_CORR_NAO_REUNI Quantidade de corridas com o propósito declarado e diferente de "Reunião".
+| Coluna         | Descrição                                  |
+|----------------|--------------------------------------------|
+| DATA_INICIO    | Data e hora de início da corrida           |
+| DATA_FIM       | Data e hora de término da corrida          |
+| CATEGORIA      | Tipo da corrida (`Negócio` ou `Pessoal`)   |
+| LOCAL_INICIO   | Local de origem da corrida                 |
+| LOCAL_FIM      | Local de destino da corrida                | Texto                    |
+| PROPOSITO      | Propósito declarado da corrida             | Texto (`Reunião`, etc.)  |
+| DISTANCIA      | Distância percorrida em quilômetros        | Número decimal    
 
 
 Abaixo temos um exemplo de uma possível linha da tabela:

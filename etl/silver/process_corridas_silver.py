@@ -41,11 +41,11 @@ class CorridasProcessorSilver:
                 df_bronze
                 .select(
                     f.date_format(
-                        f.to_date(f.col("DATA_INICIO"), "MM-dd-yyyy HH:mm"),
+                        f.to_date(f.col("DATA_INICIO"), "MM-dd-yyyy HH"),
                         "yyyy-MM-dd"
                     ).alias("DATA_INICIO"),
                     f.date_format(
-                        f.to_date(f.col("DATA_FIM"), "MM-dd-yyyy HH:mm"),
+                        f.to_date(f.col("DATA_FIM"), "MM-dd-yyyy HH"),
                         "yyyy-MM-dd"
                     ).alias("DATA_FIM"),
                     f.col("DISTANCIA").cast(LongType()).alias("DISTANCIA"),
